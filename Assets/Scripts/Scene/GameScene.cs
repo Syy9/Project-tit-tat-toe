@@ -4,11 +4,11 @@ using Game.Manager;
 using UnityEngine;
 
 public class GameScene : MonoBehaviour {
-
-    GameManager _gameManager;
-	// Use this for initialization
+    Managers managers;
 	void Awake () {
-        _gameManager = new GameManager();
-        _gameManager.Init();
-	}    
+        managers = new Managers();
+        managers.Init();
+
+        managers.Game.ActivateGame();
+	}
 }
