@@ -1,12 +1,19 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Game.Manager;
 using UnityEngine;
 
 namespace Framework.StatePattern
 {
     public abstract class State
     {
+        protected Managers Managers { get; private set; }
+        public State(Managers managers)
+        {
+            Managers = managers;
+        }
+
         public virtual void OnEnter() { }
         public virtual void OnExit() { }
     }

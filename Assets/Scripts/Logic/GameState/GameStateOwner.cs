@@ -1,4 +1,6 @@
 ﻿using Framework.StatePattern;
+using Game.Manager;
+
 namespace Game.StatePattern
 {
     public enum GameState
@@ -9,9 +11,9 @@ namespace Game.StatePattern
     }
     public class GameStateOwner : Owner<GameState>
     {
-        public void Init()
+        public void Init(Managers managers)
         {
-            AddState(GameState.Init, new InitState());
+            AddState(GameState.Init, new InitState(managers));
         }
     }
 }
