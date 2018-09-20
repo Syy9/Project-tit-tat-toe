@@ -10,11 +10,12 @@ namespace UI.Window
         public void Show()
         {
             Debug.Log("Show Window name=" + name);
+            gameObject.SetActive(true);
         }
 
         public void Hide()
         {
-
+            gameObject.SetActive(false);
         }
     }
 
