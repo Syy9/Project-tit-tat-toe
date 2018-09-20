@@ -13,7 +13,7 @@ namespace Game.StatePattern
     {
         public void Init(Managers managers)
         {
-            AddState(GameState.Init, new InitState(managers));
+            AddState(GameState.Init, new InitState(managers, this));
         }
     }
 }

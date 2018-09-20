@@ -8,14 +8,18 @@ namespace Framework.StatePattern
 {
     public abstract class State
     {
-        protected Managers Managers { get; private set; }
-        public State(Managers managers)
-        {
-            Managers = managers;
-        }
-
         public virtual void OnEnter() { }
         public virtual void OnExit() { }
+    }
+    public abstract class State<TEnum,TOwner> : State where TOwner : Owner<TEnum>
+    {
+        protected Managers Managers { get; private set; }
+        protected TOwner Owner { get; private set; }
+        public State(Managers managers, TOwner owenr)
+        {
+            Managers = managers;
+            Owner = owenr;
+        }
     }
 
     public abstract class Owner<TEnum>
