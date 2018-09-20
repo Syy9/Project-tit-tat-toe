@@ -15,5 +15,11 @@ namespace Game.Manager
             var window = UIController.Instance.Popup.GetUIWindow("StartWindow");
             window.Show();
         }
+
+        public void HideStartWindow()
+        {
+            var window = UIController.Instance.Popup.GetUIWindow("StartWindow");
+            window.Hide();
+        }
     }
 }
