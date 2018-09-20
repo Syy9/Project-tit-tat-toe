@@ -1,10 +1,12 @@
-﻿using Game.StatePattern;
+﻿using System;
+using Game.StatePattern;
 using UI;
 
 namespace Game.Manager
 {
     public class UIManager : BaseManager
     {
+        public Action OnSelectStartEvent;
         public override void Init(Managers managers)
         {
             base.Init(managers);
