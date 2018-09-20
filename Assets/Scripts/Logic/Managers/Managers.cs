@@ -4,11 +4,13 @@
     {
         public GameManager Game = new GameManager();
         public UIManager UI = new UIManager();
+        public CoroutineManager Coroutine = new CoroutineManager();
 
         public void Init()
         {
             Game.Init(this);
             UI.Init(this);
+            Coroutine.Init(this);
         }
     }
 
