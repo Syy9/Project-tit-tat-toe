@@ -14,13 +14,15 @@ namespace Game.Manager
 
         public void ShowStartWindow()
         {
-            var window = UIController.Instance.Popup.GetUIWindow("StartWindow");
+            var window = UIController.Instance.Popup.GetUIWindow("StartWindow") as UIStartWindow;
+            window.OnClick = OnSelectStartEvent;
             window.Show();
         }
 
         public void HideStartWindow()
         {
-            var window = UIController.Instance.Popup.GetUIWindow("StartWindow");
+            var window = UIController.Instance.Popup.GetUIWindow("StartWindow") as UIStartWindow;
+            window.OnClick = null;
             window.Hide();
         }
     }
