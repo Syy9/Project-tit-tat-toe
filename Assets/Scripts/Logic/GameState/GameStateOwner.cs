@@ -14,6 +14,7 @@ namespace Game.StatePattern
         public void Init(Managers managers)
         {
             AddState(GameStateType.Init, new InitState(managers, this));
+            AddState(GameStateType.Game, new GameState(managers, this));
         }
     }
 }
