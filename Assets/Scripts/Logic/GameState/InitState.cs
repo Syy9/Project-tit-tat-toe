@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Game.StatePattern
 {
-    public class InitState : State<GameState, GameStateOwner>
+    public class InitState : State<GameStateType, GameStateOwner>
     {
         public InitState(Managers managers, GameStateOwner owner) : base(managers, owner)
         {
@@ -26,7 +26,7 @@ namespace Game.StatePattern
             yield return new WaitUntil(() => isDone);
             Managers.UI.HideStartWindow();
             Managers.UI.OnSelectStartEvent = null;
-            Owner.ChangeState(GameState.Game);
+            Owner.ChangeState(GameStateType.Game);
         }
     }
 }

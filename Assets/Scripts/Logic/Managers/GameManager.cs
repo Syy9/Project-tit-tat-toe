@@ -15,7 +15,7 @@ namespace Game.Manager
 
         public void ActivateGame()
         {
-            owner.ChangeState(GameState.Init);
+            owner.ChangeState(GameStateType.Init);
         }
     }
 }
