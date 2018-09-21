@@ -39,6 +39,10 @@ namespace Framework.StatePattern
                 return;
             }
 
+#if UNITY_EDITOR
+            Debug.Log("Change State " + stateType.ToString());
+#endif
+
             if (currentState != null)
             {
                 currentState.OnExit();
