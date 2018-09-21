@@ -15,7 +15,9 @@ namespace Game.Manager
         public void ShowStartWindow()
         {
             var window = UIController.Instance.Popup.GetUIWindow("StartWindow") as UIStartWindow;
-            window.OnClick = OnSelectStartEvent;
+            window.OnClick = () => {
+                OnSelectStartEvent.Call();
+            };
             window.Show();
         }
 
