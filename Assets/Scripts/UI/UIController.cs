@@ -26,6 +26,11 @@ namespace UI
         {
             var type = typeof(T);
             var prefab = windowSource.ContainsKey(type) ? windowSource[type] as T : null;
+            if(prefab == null)
+            {
+                Debug.LogErrorFormat("Prefabが取得できませんでした。 type={0}", type.ToString());
+                return null;
+            }
             var uiWindow = GameObject.Instantiate(prefab);
             uiWindow.transform.SetParent(cacheRoot, false);
             uiWindow.gameObject.SetActive(false);
