@@ -13,10 +13,9 @@ namespace Game.Manager
             base.Init(managers);
         }
 
-        public T GetUIWindow<T>(UILayerType type) where T : UIWindow
+        public T GetUIWindow<T>() where T : UIWindow
         {
-            var layer = GetUILayer(type);
-            return layer.GetUIWindow<T>();
+            return UIController.Instance.GetUIWindow<T>();
         }
 
         UILayer GetUILayer(UILayerType type)

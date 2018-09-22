@@ -18,7 +18,7 @@ namespace Game.StatePattern
 
         IEnumerator Process()
         {
-            var uiStartWindow = Managers.UI.GetUIWindow<UIStartWindow>(UILayerType.Popup);
+            var uiStartWindow = Managers.UI.GetUIWindow<UIStartWindow>();
             bool isDone = false;
             uiStartWindow.OnClick += () => {
                 isDone = true;
