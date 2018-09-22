@@ -25,7 +25,10 @@ public class SingletonMonoBehaviour<T> : MonoBehaviour where T : SingletonMonoBe
     protected void Awake()
     {
         CheckInstance();
+        OnAwake();
     }
+
+    protected virtual void OnAwake() { }
 
     protected bool CheckInstance()
     {
