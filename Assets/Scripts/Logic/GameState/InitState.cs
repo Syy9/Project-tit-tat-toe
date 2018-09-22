@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using Framework.StatePattern;
 using Game.Manager;
+using UI;
 using UnityEngine;
 
 namespace Game.StatePattern
@@ -23,7 +24,7 @@ namespace Game.StatePattern
             uiStartWindow.OnClick += () => {
                 isDone = true;
             };
-            uiStartWindow.Show();
+            uiStartWindow.Show(UILayerType.Popup);
             yield return new WaitUntil(() => isDone);
             uiStartWindow.Hide();
             uiStartWindow.OnClick = null;

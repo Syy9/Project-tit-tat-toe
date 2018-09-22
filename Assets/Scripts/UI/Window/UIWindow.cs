@@ -7,14 +7,16 @@ namespace UI.Window
     public class UIWindow : MonoBehaviour
     {
 
-        public void Show()
+        public void Show(UILayerType type)
         {
             gameObject.SetActive(true);
+            UIController.Instance.GetUILayer(type).Insert(this);
+
         }
 
         public void Hide()
         {
-            gameObject.SetActive(false);
+            GameObject.Destroy(gameObject);
         }
     }
 

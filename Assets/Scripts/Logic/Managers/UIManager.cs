@@ -3,6 +3,7 @@ using Game.StatePattern;
 using UI;
 using UI.Lyaer;
 using UI.Window;
+using UnityEngine;
 
 namespace Game.Manager
 {
@@ -17,24 +18,5 @@ namespace Game.Manager
         {
             return UIController.Instance.GetUIWindow<T>();
         }
-
-        UILayer GetUILayer(UILayerType type)
-        {
-            switch (type)
-            {
-                case UILayerType.Content:
-                    return UIController.Instance.Content;
-                case UILayerType.Popup:
-                    return UIController.Instance.Popup;
-            }
-
-            return null;
-        }
-    }
-
-    public enum UILayerType
-    {
-        Content,
-        Popup,
     }
 }
