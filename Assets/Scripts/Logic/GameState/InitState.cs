@@ -18,14 +18,15 @@ namespace Game.StatePattern
 
         IEnumerator Process()
         {
-            Managers.UI.ShowStartWindow();
+            var uiStartWindow = Managers.UI.GetUIWindow<UIStartWindow>(UILayerType.Popup);
             bool isDone = false;
-            Managers.UI.OnSelectStartEvent += () => {
+            uiStartWindow.OnClick += () => {
                 isDone = true;
             };
+            uiStartWindow.Show();
             yield return new WaitUntil(() => isDone);
-            Managers.UI.HideStartWindow();
-            Managers.UI.OnSelectStartEvent = null;
+            uiStartWindow.Hide();
+            uiStartWindow.OnClick = null;
             Owner.ChangeState(GameStateType.Game);
         }
     }

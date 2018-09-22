@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UI.Window;
@@ -9,10 +10,20 @@ namespace UI.Lyaer
     public class UILayer : MonoBehaviour
     {
         [SerializeField] List<UIWindow> RegisterUIList;
+        Dictionary<Type, UIWindow> windowSource = new Dictionary<Type, UIWindow>();
 
-        public UIWindow GetUIWindow(string name)
+        void Awake()
         {
-            return RegisterUIList.FirstOrDefault(ui => ui.name == name);
+            foreach (var uiWindow in RegisterUIList)
+            {
+                windowSource[uiWindow.GetType()] = uiWindow;
+            }
+        }
+
+        public T GetUIWindow<T>() where T : UIWindow
+        {
+            var type = typeof(T);
+            return windowSource.ContainsKey(type) ? windowSource[type] as T : null;
         }
 
     }

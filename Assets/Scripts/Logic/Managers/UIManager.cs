@@ -1,31 +1,41 @@
 ﻿using System;
 using Game.StatePattern;
 using UI;
+using UI.Lyaer;
+using UI.Window;
 
 namespace Game.Manager
 {
     public class UIManager : BaseManager
     {
-        public Action OnSelectStartEvent;
         public override void Init(Managers managers)
         {
             base.Init(managers);
         }
 
-        public void ShowStartWindow()
+        public T GetUIWindow<T>(UILayerType type) where T : UIWindow
         {
-            var window = UIController.Instance.Popup.GetUIWindow("StartWindow") as UIStartWindow;
-            window.OnClick = () => {
-                OnSelectStartEvent.Call();
-            };
-            window.Show();
+            var layer = GetUILayer(type);
+            return layer.GetUIWindow<T>();
         }
 
-        public void HideStartWindow()
+        UILayer GetUILayer(UILayerType type)
         {
-            var window = UIController.Instance.Popup.GetUIWindow("StartWindow") as UIStartWindow;
-            window.OnClick = null;
-            window.Hide();
+            switch (type)
+            {
+                case UILayerType.Content:
+                    return UIController.Instance.Content;
+                case UILayerType.Popup:
+                    return UIController.Instance.Popup;
+            }
+
+            return null;
         }
+    }
+
+    public enum UILayerType
+    {
+        Content,
+        Popup,
     }
 }
