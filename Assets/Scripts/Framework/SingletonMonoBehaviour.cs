@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[DefaultExecutionOrder(ExecutionOrder.LEVEL_SYSTEM)]
 public class SingletonMonoBehaviour<T> : MonoBehaviour where T : SingletonMonoBehaviour<T>
 {
     protected static T instance;
