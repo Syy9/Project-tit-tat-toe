@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using Framework.StatePattern;
 using Game.Manager;
+using UI;
 using UnityEngine;
 
 namespace Game.StatePattern
@@ -13,6 +14,8 @@ namespace Game.StatePattern
 
         public override void OnEnter()
         {
+            var window = Managers.UI.GetUIWindow<UIBordWindow>();
+            window.Show(UILayerType.Content);
         }
     }
 }
