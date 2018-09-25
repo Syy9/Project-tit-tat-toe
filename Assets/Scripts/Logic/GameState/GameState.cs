@@ -8,6 +8,7 @@ namespace Game.StatePattern
 {
     public class GameState : State<GameStateType, GameStateOwner> , IBordEventHandle
     {
+        PlayerType turnPlayer = PlayerType.Player1;
         public GameState(Managers managers, GameStateOwner owner) : base(managers, owner)
         {
         }
@@ -22,7 +23,10 @@ namespace Game.StatePattern
 
         public void OnSelectBord(Bord bord)
         {
-            bord.ChangeBordType(BordType.Blue);
+            bord.ChangeOwner(turnPlayer);
+            bord.ChangeBordType(BordType.Checked);
+
+            turnPlayer = turnPlayer.GetNextPlayer();
         }
 
         Bord[] CreateBords()

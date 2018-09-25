@@ -37,7 +37,8 @@ public class UIBord : MonoBehaviour {
     {
         Bord = bord;
         Bord.OnChangeBordType = OnChangeBordType;
-        ChangeBG(Bord.BordType);
+        Bord.OnChangeOwner = OnChangeOwner;
+        ChangeBG(PlayerType.None);
         Button.onClick.AddListener(() =>
         {
             OnSelectBord.Call(Bord);
@@ -46,24 +47,16 @@ public class UIBord : MonoBehaviour {
 
     void OnChangeBordType(BordType bordType)
     {
-        ChangeBG(bordType);
+        
     }
 
-    void ChangeBG(BordType bordType)
+    void OnChangeOwner(PlayerType owner)
     {
-        switch (bordType)
-        {
-            case BordType.None:
-                BG.color = Color.white;
-                break;
-            case BordType.Blue:
-                BG.color = Color.blue;
-                break;
-            case BordType.Red:
-                BG.color = Color.red;
-                break;
-            default:
-                throw new NotImplementedException("Not Implemented BordType");
-        }
+        ChangeBG(owner);
+    }
+
+    void ChangeBG(PlayerType owner)
+    {
+        BG.color = owner.GetColor();
     }
 }

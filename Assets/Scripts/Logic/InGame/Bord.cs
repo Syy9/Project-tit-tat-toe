@@ -4,7 +4,9 @@ public class Bord
 {
     public int BordId { get; private set; }
     public BordType BordType { get; private set; }
+    public PlayerType Owner { get; private set; }
     public Action<BordType> OnChangeBordType;
+    public Action<PlayerType> OnChangeOwner;
     private Bord()
     {
 
@@ -21,5 +23,11 @@ public class Bord
     {
         BordType = newType;
         OnChangeBordType.Call(newType);
+    }
+
+    public void ChangeOwner(PlayerType owner)
+    {
+        Owner = owner;
+        OnChangeOwner.Call(owner);
     }
 }
