@@ -23,6 +23,11 @@ namespace Game.StatePattern
 
         public void OnSelectBord(Bord bord)
         {
+            if(bord.HasOwner())
+            {
+                return;
+            }
+
             bord.ChangeOwner(turnPlayer);
             bord.ChangeBordType(BordType.Checked);
 

@@ -30,4 +30,9 @@ public class Bord
         Owner = owner;
         OnChangeOwner.Call(owner);
     }
+
+    public bool HasOwner()
+    {
+        return BordType == BordType.Checked;
+    }
 }
