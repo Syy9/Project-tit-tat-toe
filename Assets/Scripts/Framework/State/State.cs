@@ -9,6 +9,7 @@ namespace Framework.StatePattern
     public abstract class State
     {
         public virtual void OnEnter() { }
+        public virtual void OnEnter(object arg) { }
         public virtual void OnExit() { }
     }
     public abstract class State<TEnum,TOwner> : State where TOwner : Owner<TEnum>
@@ -33,10 +34,22 @@ namespace Framework.StatePattern
 
         public void ChangeState(TEnum stateType)
         {
+            currentState = ExitAndGetState(stateType);
+            currentState.OnEnter();
+        }
+
+        public void ChangeState(TEnum stateType, object arg)
+        {
+            currentState = ExitAndGetState(stateType);
+            currentState.OnEnter(arg);
+        }
+
+        State ExitAndGetState(TEnum stateType)
+        {
             if (!stateList.ContainsKey(stateType))
             {
                 Debug.Log("Not found state. stateType=" + stateType.ToString());
-                return;
+                return null;
             }
 
 #if UNITY_EDITOR
@@ -48,8 +61,8 @@ namespace Framework.StatePattern
                 currentState.OnExit();
             }
 
-            currentState = stateList[stateType];
-            currentState.OnEnter();
+            var newState = stateList[stateType];
+            return newState;
         }
     }
 }
