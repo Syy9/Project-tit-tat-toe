@@ -2,6 +2,7 @@
 using Framework.StatePattern;
 using Game.Manager;
 using UI;
+using UI.Window;
 using UnityEngine;
 
 namespace Game.StatePattern
@@ -15,7 +16,18 @@ namespace Game.StatePattern
         public override void OnEnter(object arg)
         {
             var winner = (PlayerType) arg;
-            Debug.Log("winner : " + winner);
+            var window = Managers.UI.GetUIWindow<UIResultWindow>();
+            window.Init(winner);
+            window.OnCloseEvent += OnClose;
+
+            window.Show(UILayerType.Popup);
+        }
+
+        void OnClose()
+        {
+            Managers.UI.Close<UIResultWindow>();
+            Managers.UI.Close<UIBordWindow>();
+            Owner.ChangeState(GameStateType.Init);
         }
 
     }
