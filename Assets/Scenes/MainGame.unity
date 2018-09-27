@@ -603,7 +603,7 @@ MonoBehaviour:
   cacheRoot: {fileID: 2144802457}
   uiWindowList:
   - {fileID: 114401317424708396, guid: a9b6dd3f816f5405b948144482693ab3, type: 2}
-  - {fileID: 114945112549870706, guid: d5d47a9ade6d24cc590815c81cb025b4, type: 2}
+  - {fileID: 114951024770127926, guid: d5d47a9ade6d24cc590815c81cb025b4, type: 2}
   - {fileID: 114179908110982674, guid: 915d204f695ce44fd89da338984cd039, type: 2}
   Content: {fileID: 194571799}
   Popup: {fileID: 1986587722}
