@@ -26,8 +26,7 @@ namespace Game.StatePattern
             };
             uiStartWindow.Show(UILayerType.Popup);
             yield return new WaitUntil(() => isDone);
-            uiStartWindow.Hide();
-            uiStartWindow.OnClick = null;
+            Managers.UI.Close<UIStartWindow>();
             Owner.ChangeState(GameStateType.Game);
         }
     }
