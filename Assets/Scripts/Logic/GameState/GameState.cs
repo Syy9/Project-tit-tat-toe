@@ -20,6 +20,7 @@ namespace Game.StatePattern
             var window = Managers.UI.GetUIWindow<UIBordWindow>();
             var bords = CreateBords();
             window.Init(bords, this);
+            window.UpdateTurnPlayerName(turnPlayer);
             window.Show(UILayerType.Content);
 
             calclator = new GameCalclator(bords);
@@ -45,6 +46,8 @@ namespace Game.StatePattern
                 if (!result.IsDone)
                 {
                     turnPlayer = turnPlayer.GetNextPlayer();
+                    var window = Managers.UI.GetUIWindow<UIBordWindow>();
+                    window.UpdateTurnPlayerName(turnPlayer);
                 }
             } while(!result.IsDone);
 

@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UI.Window;
 using UnityEngine;
 
 public class UIBordWindow : UIWindow {
     IBordEventHandle Hnadler;
+    [SerializeField] TextMeshProUGUI TurnPlayerName;
 
     public void Init(Bord[] bords, IBordEventHandle handler)
     {
@@ -24,5 +26,10 @@ public class UIBordWindow : UIWindow {
             uiBord.OnSelectBord += Hnadler.OnSelectBord;
             index++;
         }
+    }
+
+    public void UpdateTurnPlayerName(PlayerType turnPlayer)
+    {
+        TurnPlayerName.text = turnPlayer.ToString();
     }
 }
